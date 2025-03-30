@@ -1,97 +1,81 @@
-# Convolutional Neural Networks Deep Dive
+> 🇧🇷 Este README está em português.  
+> 🇺🇸 [Click here for the English version.](README_EN.md)
 
-## Overview
-This project is a deep dive into **Convolutional Neural Networks (CNNs)**, a type of deep learning model specialized for grid-like data structures such as images. The notebook explores various CNN architectures, their key components, and implements a model using the CIFAR-100 dataset.
+# 🧠 Estudo Profundo sobre Redes Neurais Convolucionais (CNN)
 
-## Table of Contents
-1. [Introduction to CNNs](#introduction-to-cnns)
-2. [CNN Architectures](#cnn-architectures)
-3. [Key Components of CNNs](#key-components-of-cnns)
-4. [Dataset Preparation](#dataset-preparation)
-5. [Model Implementation](#model-implementation)
-6. [Performance Evaluation](#performance-evaluation)
-7. [Data Augmentation](#data-augmentation)
-8. [Results and Analysis](#results-and-analysis)
-9. [Installation and Usage](#installation-and-usage)
-10. [References](#references)
+## 🔍 Visão Geral
+Este projeto explora em profundidade os principais conceitos, camadas e operações envolvidas em **Redes Neurais Convolucionais (CNNs)**. A partir de um conjunto de imagens real (CIFAR-100), são implementadas redes neurais personalizadas com foco didático e prático.
 
-## Introduction to CNNs
-CNNs are designed to process structured grid data, leveraging **convolutional layers** to extract hierarchical features automatically. This reduces the need for manual feature engineering and enhances model performance for tasks such as image recognition and classification.
-
-## CNN Architectures
-This project explores various CNN architectures, including:
-- **LeNet-5** (1998): Early CNN for handwritten digit recognition.
-- **AlexNet** (2012): Introduced deep networks with ReLU and dropout.
-- **VGGNet** (2014): Used deep convolutional layers with small filters (3x3).
-- **GoogLeNet/Inception** (2014): Introduced multi-scale feature extraction.
-- **ResNet** (2015): Used residual connections for ultra-deep networks.
-- **YOLO (You Only Look Once)** (2015): Real-time object detection.
-- **U-Net** (2015): Medical image segmentation.
-- **DenseNet** (2017): Improved feature reuse across layers.
-
-## Key Components of CNNs
-- **Convolutional Layers**: Extract spatial features from images using filters.
-- **Activation Functions**: Introduce non-linearity (ReLU, Sigmoid, Softmax).
-- **Pooling Layers**: Reduce spatial dimensions to enhance computational efficiency.
-- **Fully Connected Layers**: Flatten feature maps and make predictions.
-- **Dropout**: Prevent overfitting by randomly dropping neurons during training.
-
-## Dataset Preparation
-- **Dataset**: CIFAR-100 dataset from the University of Toronto.
-- **Preprocessing Steps**:
-  - Data extraction and formatting.
-  - Normalization of pixel values.
-  - Splitting into training and validation sets.
-
-## Model Implementation
-- Implemented a **custom CNN architecture** using TensorFlow/Keras.
-- Model contains **three convolutional layers**, **max pooling layers**, **dropout**, and **fully connected layers**.
-- **Optimization**: Adam optimizer, Sparse Categorical Cross-Entropy loss function.
-- **Training Setup**: 30 epochs with early stopping and model checkpointing.
-
-## Performance Evaluation
-- Accuracy and loss graphs for training and validation.
-- Model hyperparameter tuning (L2 regularization, dropout rate, learning rate adjustments).
-- Best model performance recorded at **epoch 30**.
-
-## Data Augmentation
-- Implemented **random flipping** and **random rotation** to improve model generalization.
-- Retrained model using augmented dataset.
-- Performance comparison between the original and augmented models.
-
-## Results and Analysis
-- Improved validation accuracy after applying data augmentation.
-- Comparison of different CNN architectures in terms of **accuracy and computational efficiency**.
-- Next steps involve **testing pre-trained architectures (VGG16, ResNet)** to further enhance performance.
-
-## Installation and Usage
-### Requirements
-- Python 3.x
-- TensorFlow / Keras
-- NumPy
-- Pandas
-- Matplotlib / Seaborn
-
-### Running the Notebook
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/CNN_Deep_Dive.git
-   cd CNN_Deep_Dive
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. Open and run the Jupyter Notebook:
-   ```bash
-   jupyter notebook Convolutional_Neural_Networks_Deep_Dive.ipynb
-   ```
-
-## References
-- [CIFAR-100 Dataset](https://www.cs.toronto.edu/~kriz/cifar-100-python.tar.gz)
-- [Convolutional Neural Networks - Medium](https://medium.com/analytics-vidhya/convolution-operations-in-cnn-deep-learning-compter-vision-128906ece7d3)
-- TensorFlow Documentation: https://www.tensorflow.org/
+É ideal para demonstrar conhecimento em visão computacional, construção de modelos do zero e boas práticas de treinamento.
 
 ---
-### Author
-*Your Name / GitHub Username*
+
+## 🎯 Objetivos
+- Entender a fundo as **camadas fundamentais de CNNs** (conv2d, pooling, batch norm, dropout, etc.)
+- Implementar uma arquitetura **customizada** usando Keras
+- Aplicar **data augmentation** e técnicas de regularização
+- Avaliar o modelo com métricas, curvas e matriz de confusão
+
+---
+
+## 🧠 Conjunto de Dados
+- 📚 **Base:** [CIFAR-100](https://www.cs.toronto.edu/~kriz/cifar.html)
+- 🔢 **Formato:** 60.000 imagens 32x32 (50.000 treino + 10.000 teste)
+- 🔍 **Tarefa:** Classificação de 100 categorias de objetos
+
+---
+
+## 🏗️ Arquitetura da Rede
+A rede convolucional foi construída **do zero** com:
+- Camadas `Conv2D` com diferentes tamanhos de filtro e strides
+- Camadas `MaxPooling2D` e `Dropout` para controle de overfitting
+- Normalização com `BatchNormalization`
+- Camadas densas para decisão final
+- Função de ativação `ReLU` + `Softmax` na saída
+
+---
+
+## 🧪 Treinamento e Avaliação
+- **Função de perda:** `SparseCategoricalCrossentropy`
+- **Otimizador:** `Adam`
+- **Épocas:** 20
+- **Técnicas adicionais:** Data Augmentation, EarlyStopping
+
+### 🔍 Métricas de Avaliação
+- Acurácia (treino e validação)
+- Curva de aprendizado
+- Matriz de confusão
+- Acurácia por classe (top-1)
+
+---
+
+## 📦 Bibliotecas e Ferramentas
+- TensorFlow / Keras
+- Matplotlib / Seaborn
+- NumPy / Pandas
+- Google Colab (ambiente utilizado)
+
+---
+
+## 🔁 Possibilidades de Expansão
+- Aplicação de **Transfer Learning** com redes como ResNet, EfficientNet
+- Visualizações com **Grad-CAM**
+- Exportação do modelo para uso em produção (API ou Mobile)
+- Treinamento com outras bases (ex: FashionMNIST, Tiny ImageNet)
+
+---
+
+### 👨‍💻 Sobre o Autor
+
+**André Rizzo**  
+📊 Cientista de Dados Sênior | Estatístico | MBA em IA e Big Data (USP)  
+🧠 Especialista em Deep Learning, Visão Computacional e Modelagem Preditiva  
+📍 Rio de Janeiro, Brasil  
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Perfil-0077B5?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/andrerizzo1)
+[![GitHub](https://img.shields.io/badge/GitHub-Portfólio-181717?logo=github&logoColor=white)](https://github.com/andrerizzo)
+[![Email](https://img.shields.io/badge/Email-andrerizzo@hotmail.com-D14836?logo=gmail&logoColor=white)](mailto:andrerizzo@hotmail.com)
+
+---
+
+*Última atualização: 30/03/2025*
